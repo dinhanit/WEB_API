@@ -47,4 +47,4 @@ async def delete_item(item_id: str):
     return {"message": f"Item {item_id} deleted successfully"}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8123)
+    uvicorn.run(app, host="0.0.0.0", port=8501)
