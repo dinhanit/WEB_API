@@ -15,6 +15,10 @@ items = {
     "bar": Item(name="Bar", price=35.4),
 }
 
+@app.get("/hello/")
+async def read_item():
+    return "Hello World!"
+
 @app.get("/items/")
 async def read_item(skip: int = 0, limit: int = 10):
     return list(items.values())[skip : skip + limit]
@@ -45,6 +49,7 @@ async def delete_item(item_id: str):
         raise HTTPException(status_code=404, detail="Item not found")
     del items[item_id]
     return {"message": f"Item {item_id} deleted successfully"}
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8501)
